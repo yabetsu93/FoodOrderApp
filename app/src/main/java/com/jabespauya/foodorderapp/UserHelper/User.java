@@ -6,10 +6,10 @@ package com.jabespauya.foodorderapp.UserHelper;
 
 public class User {
     private String mName;
-    private Integer mPhoneNo;
+    private String mPhoneNo;
     private String mPassword;
 
-    public User(String name, Integer phoneNo, String password) {
+    public User(String name, String phoneNo, String password) {
         mName = name;
         mPhoneNo = phoneNo;
         mPassword = password;
@@ -28,11 +28,11 @@ public class User {
         mName = name;
     }
 
-    public Integer getPhoneNo() {
+    public String getPhoneNo() {
         return mPhoneNo;
     }
 
-    public void setPhoneNo(Integer phoneNo) {
+    public void setPhoneNo(String phoneNo) {
         mPhoneNo = phoneNo;
     }
 

@@ -37,12 +37,12 @@ public class Signin extends AppCompatActivity {
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
+        final FirebaseDatabase  database = FirebaseDatabase.getInstance();
+        final DatabaseReference reference = database.getReference("User");
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-               final FirebaseDatabase  database = FirebaseDatabase.getInstance();
-               final DatabaseReference reference = database.getReference("User");
 
                 final ProgressDialog mProgressDialog = new ProgressDialog(Signin.this);
                 mProgressDialog.setMessage("Please wait...");
@@ -55,8 +55,10 @@ public class Signin extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         if (edtPassword.length() > 0 && edtPhoneNo.length() > 0) {
-                            if (dataSnapshot.child(edtPhoneNo.getText().toString()).exists()) {
-                                User user = dataSnapshot.child(edtPhoneNo.getText().toString()).getValue(User.class);
+
+                            User user = dataSnapshot.child(edtPhoneNo.getText().toString()).getValue(User.class);
+
+                            //if (dataSnapshot.child(edtPhoneNo.getText().toString()).exists()) {
                                 //close the dialog
                                 mProgressDialog.dismiss();
 
@@ -64,11 +66,11 @@ public class Signin extends AppCompatActivity {
                                     Toast.makeText(Signin.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
 
                                 } else {
-                                    Toast.makeText(Signin.this, "Phone no. already exists!Please try again!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Signin.this, "Sign in failed!", Toast.LENGTH_SHORT).show();
                                 }
-                            } else {
-                                Toast.makeText(Signin.this, "User does not exist. Please create one!", Toast.LENGTH_SHORT).show();
-                            }//end of first else statement
+//                            } else {
+//                                Toast.makeText(Signin.this, "User does not exist. Please create one!", Toast.LENGTH_SHORT).show();
+//                            }//end of first else statement
                         } else {
                             Toast.makeText(Signin.this, "All fields are required!", Toast.LENGTH_SHORT).show();
                         }
@@ -77,6 +79,7 @@ public class Signin extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
+                        mProgressDialog.dismiss();
                         Toast.makeText(Signin.this, databaseError.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });

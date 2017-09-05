@@ -37,6 +37,9 @@ public class Signup extends AppCompatActivity {
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         btnSignup = (Button) findViewById(R.id.btnSignup);
 
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference reference = database.getReference("User");
+
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,8 +50,7 @@ public class Signup extends AppCompatActivity {
                     mProgressDialog.setMessage("Please wait...");
                     mProgressDialog.show();
 
-                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    final DatabaseReference reference = database.getReference("User");
+
 
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
