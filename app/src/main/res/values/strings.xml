@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FoodOrderApp</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="food">Food</string>
+    <string name="food_delicacies_especially_made_for_you_and_your_family_you_will_enjoy_the_taste_and_flavor_of_each_available_flavor_for_you">Food delicacies especially made for you and your family you will enjoy the taste and flavor of each available flavor for you</string>
+</resources>

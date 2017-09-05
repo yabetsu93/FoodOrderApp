@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/food_order"
+    tools:context="com.jabespauya.foodorderapp.MainActivity">
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/btnSignup"
+            android:text="@string/sign_up"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:textColor="@android:color/white"
+            android:shadowColor="@android:color/black"
+            app:shadowEnabled="true"
+            android:onClick="onClick"
+            app:shadowHeight="5dp"
+            app:cornerRadius="4dp"
+            app:buttonColor="@color/btnSignup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/btnSignInLink"
+            android:text="@string/sign_in"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:onClick="onClick"
+            android:textColor="@android:color/white"
+            android:shadowColor="@android:color/black"
+            app:shadowEnabled="true"
+            app:shadowHeight="5dp"
+            app:cornerRadius="4dp"
+            app:buttonColor="@color/btnSignActive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_margin="50px"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/food"
+            android:textColor="@android:color/white"
+            android:textSize="60sp"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="53dp"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/food_delicacies_especially_made_for_you_and_your_family_you_will_enjoy_the_taste_and_flavor_of_each_available_flavor_for_you"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
