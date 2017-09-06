@@ -60,7 +60,7 @@ public class Signup extends AppCompatActivity {
                                 reference.child(edtPhoneNo.getText().toString()).setValue(user);
                                 Toast.makeText(Signup.this, "Successful sign up", Toast.LENGTH_SHORT).show();
                                 finish();
-                            } else if (dataSnapshot.child(edtPhoneNo.getText().toString()).exists()) {
+                            } else {
                                 Toast.makeText(Signup.this, "Phone already exist", Toast.LENGTH_SHORT).show();
                             }
                         }

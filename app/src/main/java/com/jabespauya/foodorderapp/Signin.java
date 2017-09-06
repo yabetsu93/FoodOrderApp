@@ -68,7 +68,7 @@ public class Signin extends AppCompatActivity {
 
                                 } else {
                                     Toast.makeText(Signin.this, "Sign in failed!", Toast.LENGTH_SHORT).show();
-                                }
+                                }//end of if statement
                             } else {
                                 Toast.makeText(Signin.this, "User does not exist. Please create one!", Toast.LENGTH_SHORT).show();
                             }//end of first else statement
