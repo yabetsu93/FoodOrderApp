@@ -64,7 +64,6 @@ public class Signup extends AppCompatActivity {
                                 Toast.makeText(Signup.this, "Phone already exist", Toast.LENGTH_SHORT).show();
                             }
                         }
-
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                             Toast.makeText(Signup.this, databaseError.toString(), Toast.LENGTH_SHORT).show();

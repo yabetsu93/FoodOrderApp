@@ -75,7 +75,6 @@ public class Signin extends AppCompatActivity {
                         } else {
                             Toast.makeText(Signin.this, "All fields are required!", Toast.LENGTH_SHORT).show();
                         }
-
                     }
 
                     @Override
