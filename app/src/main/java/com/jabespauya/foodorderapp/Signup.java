@@ -1,8 +1,8 @@
 package com.jabespauya.foodorderapp;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,11 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.jabespauya.foodorderapp.FirebaseHelper.FirebaseHelpers;
 import com.jabespauya.foodorderapp.UserHelper.User;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class Signup extends AppCompatActivity {
 
@@ -26,6 +22,8 @@ public class Signup extends AppCompatActivity {
     private EditText edtName;
     private EditText edtPassword;
     private Button btnSignup;
+
+    private String TAG = Signup.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +53,15 @@ public class Signup extends AppCompatActivity {
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+                            mProgressDialog.dismiss();
 
-                            if (dataSnapshot.child(edtPhoneNo.getText().toString()).exists()) {
-                                mProgressDialog.dismiss();
-                                Toast.makeText(Signup.this, "Phone already exist", Toast.LENGTH_SHORT).show();
-                            } else {
-                                mProgressDialog.dismiss();
+                            if (!dataSnapshot.child(edtPhoneNo.getText().toString()).exists()) {
                                 User user = new User(edtName.getText().toString(), edtPassword.getText().toString());
                                 reference.child(edtPhoneNo.getText().toString()).setValue(user);
                                 Toast.makeText(Signup.this, "Successful sign up", Toast.LENGTH_SHORT).show();
                                 finish();
+                            } else if (dataSnapshot.child(edtPhoneNo.getText().toString()).exists()) {
+                                Toast.makeText(Signup.this, "Phone already exist", Toast.LENGTH_SHORT).show();
                             }
                         }
 

@@ -1,8 +1,9 @@
 package com.jabespauya.foodorderapp;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,11 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.jabespauya.foodorderapp.FirebaseHelper.FirebaseHelpers;
 import com.jabespauya.foodorderapp.UserHelper.User;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 public class Signin extends AppCompatActivity {
@@ -26,6 +23,8 @@ public class Signin extends AppCompatActivity {
     private EditText edtPhoneNo;
     private EditText edtPassword;
     private Button btnLogin;
+
+    private String TAG = Signin.class.getSimpleName();
 
 
     @Override
@@ -58,7 +57,9 @@ public class Signin extends AppCompatActivity {
 
                             User user = dataSnapshot.child(edtPhoneNo.getText().toString()).getValue(User.class);
 
-                            //if (dataSnapshot.child(edtPhoneNo.getText().toString()).exists()) {
+                            Log.d(TAG, user.toString() + "this is a user");
+
+                            if (dataSnapshot.child(edtPhoneNo.getText().toString()).exists()) {
                                 //close the dialog
                                 mProgressDialog.dismiss();
 
@@ -68,9 +69,9 @@ public class Signin extends AppCompatActivity {
                                 } else {
                                     Toast.makeText(Signin.this, "Sign in failed!", Toast.LENGTH_SHORT).show();
                                 }
-//                            } else {
-//                                Toast.makeText(Signin.this, "User does not exist. Please create one!", Toast.LENGTH_SHORT).show();
-//                            }//end of first else statement
+                            } else {
+                                Toast.makeText(Signin.this, "User does not exist. Please create one!", Toast.LENGTH_SHORT).show();
+                            }//end of first else statement
                         } else {
                             Toast.makeText(Signin.this, "All fields are required!", Toast.LENGTH_SHORT).show();
                         }

@@ -9,10 +9,8 @@ public class User {
     private String mPhoneNo;
     private String mPassword;
 
-    public User(String name, String phoneNo, String password) {
-        mName = name;
-        mPhoneNo = phoneNo;
-        mPassword = password;
+    public User() {
+
     }
 
     public User(String name, String password) {
