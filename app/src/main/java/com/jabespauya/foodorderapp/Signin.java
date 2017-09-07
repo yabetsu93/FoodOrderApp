@@ -1,6 +1,7 @@
 package com.jabespauya.foodorderapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,6 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jabespauya.foodorderapp.Common.Helper;
 import com.jabespauya.foodorderapp.UserHelper.User;
 
 
@@ -57,14 +59,19 @@ public class Signin extends AppCompatActivity {
 
                             User user = dataSnapshot.child(edtPhoneNo.getText().toString()).getValue(User.class);
 
-                            Log.d(TAG, user.toString() + "this is a user");
-
+                           // Log.d(TAG, user.toString() + "this is a user");
+                            mProgressDialog.dismiss();
                             if (dataSnapshot.child(edtPhoneNo.getText().toString()).exists()) {
                                 //close the dialog
-                                mProgressDialog.dismiss();
+
 
                                 if (user.getPassword().equals(edtPassword.getText().toString())) {
                                     Toast.makeText(Signin.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(Signin.this, Home.class);
+                                    Helper.mCurrentUser = user;
+                                    Log.d(TAG, user.toString() + "user info");
+                                    startActivity(intent);
+                                    finish();
 
                                 } else {
                                     Toast.makeText(Signin.this, "Sign in failed!", Toast.LENGTH_SHORT).show();
