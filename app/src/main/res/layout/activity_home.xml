@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@drawable/food_order"
+    android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
     tools:openDrawer="start">
 
     <include
@@ -23,7 +23,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_home"
         app:menu="@menu/activity_home_drawer"
-
         android:background="@color/overlayBackground"
         app:itemTextColor="@android:color/white"
         app:itemIconTint="@android:color/white"/>

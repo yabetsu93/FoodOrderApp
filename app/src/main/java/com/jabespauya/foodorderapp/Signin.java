@@ -68,8 +68,8 @@ public class Signin extends AppCompatActivity {
                                 if (user.getPassword().equals(edtPassword.getText().toString())) {
                                     Toast.makeText(Signin.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(Signin.this, Home.class);
+                                    //Toast.makeText(Signin.this, ""+ user.toString(), Toast.LENGTH_SHORT).show();
                                     Helper.mCurrentUser = user;
-                                    Log.d(TAG, user.toString() + "user info");
                                     startActivity(intent);
                                     finish();
 
